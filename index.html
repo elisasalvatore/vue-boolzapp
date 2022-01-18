@@ -12,42 +12,106 @@
 </head>
 <body>
     <div id="app">
-        <div id="container">
-
-            <header>
-                <div>
-                    <span>Header sx</span>
-                    <span>Icone</span>
-                </div>
-    
-                <div>
-                    <span>Header dx</span>
-                    <span>Icone</span>
-                </div>
-            </header>
-
-            <div class="sidebar">
-                <div class="notifications">
-                    Box notifiche 
+   
+        <header>
+            <div class="hd-left">
+                <div class="profile">
+                    <img :src="userProfileInfos.avatar">
+                    
+                    <div class="info">
+                        <div class="user-name">{{userProfileInfos.name}}</div>
+                    </div>
                 </div>
 
-                <div class="search-bar">
-                    <input placeholder="Cerca o inizia una nuova chat">
-                </div>
-
-                <div class="contacts-list">
-                    <ul>
-                        <li v-for="(item, i) in contacts">
-                            <img :src="item.avatar" />
-                            <span>{{item.name}}</span>
-                        </li>
-                    </ul>
+                <div class="icons">
+                    <i class="fas fa-circle-notch"></i> 
+                    <!-- unicode: \f1ce -->
+                    <i class="fas fa-comment-alt"></i>
+                    <!-- unicode: \f27a -->
+                    <i class="fas fa-ellipsis-v"></i>
+                    <!-- unicode: \f142 -->
                 </div>
             </div>
 
+            <div class="hd-right">
+                <div class="profile">
+                    <img :src="contacts[0].avatar">
+
+                    <div class="infos">
+                        <div class="mate-name">{{contacts[0].name}}</div>
+                        <div class="mate-login">Ultimo accesso oggi alle</div>
+                    </div>
+                </div>
+
+                <span class="icons">
+                    <i class="fas fa-search"></i>
+                    <!-- unicode: \f002 -->
+                    <i class="fas fa-paperclip"></i>
+                    <!-- unicode: \f0c6 -->
+                    <i class="fas fa-ellipsis-v"></i>
+                </span>
+            </div>
+        </header>
+
+        <div class="sidebar">
+            <div class="notifications">
+                Box notifiche 
+            </div>
+
+            <div class="search-bar">
+                <input placeholder="Cerca o inizia una nuova chat">
+            </div>
+
+            <div class="contacts-list">
+                <ul>
+                    <li v-for="(item, i) in contacts">
+                        <img :src="item.avatar" />
+                        <span>{{item.name}}</span>
+                    </li>
+                </ul>
+            </div>
         </div>
 
+        <main>
+            <!-- dividere a metà il main:
+            div a sinistra classe "answer" con box di messaggistica bianco
+            div a destra classe "my-message" con box di messaggistica verde 
+            * main = flex con justify-contents: space between/around -->
+            <div class="container-chat">
+                <div class="container-my-messages">
+                    <div class="my-message">
+                        Stampare date e text
+                        <!-- stampare con vue.js dell'array messages, l'elemento text e date dell'oggetto -->
+                    </div>
+    
+                    <div class="my-message">
+                        Stampare date e text
+                    </div>
+                </div>
+
+                <div class="container-answers">
+                    <div class="answer">
+                        Stampare date e text
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="ft-emojy">
+
+            </div>
+            
+            <div class="ft-input-message">
+                <input placeholder="Scrivi un messaggio">
+            </div>
+
+            <div class="ft-microphone">
+
+            </div>
+        </footer>    
     </div>
+
     <script src="./js/script.js"></script>
 </body>
 </html>

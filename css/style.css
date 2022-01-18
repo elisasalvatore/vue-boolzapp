@@ -9,38 +9,77 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#container {
+#app {
     margin: 20px auto;
     width: 1000px;
     height: 550px;
-    background-color: #ccc;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    align-items: start;
 }
 
+/* ----------------------------------- HEADER */
 header > div {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 50px;
     padding: 0 10px;
-    background-color: crimson;
+    background-color: #fff;
 }
 
-header > div:nth-child(1) {
+/* Header di sinistra */
+header > div:first-child {
     width: 350px;
     float: left;
 }
 
-header > div:nth-child(2){
+/* Header di destra */
+header > div:last-child {
     width: 650px;
     border-left: 2px solid #ccc;
 }
 
+.fas,
+.far {
+    font-size: 18px;
+    padding: 5px;
+    color: #ccc;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile > img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    margin-right: 10px;
+}
+
+.profile:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+}
+
+.mate-login {
+    padding-top: 2px;
+    color: #ccc;
+}
+
+/* ---------------------------------- SIDEBAR */
+
 .sidebar {
     width: 350px;
     height: 500px;
-    background-color: lightgoldenrodyellow;
+    float: left;
 }
 
+/* Notifiche */
 .notifications {
     width: 350px;
     height: 50px;
@@ -52,13 +91,14 @@ header > div:nth-child(2){
     display: flex;
     align-items: center;
     padding: 0 10px;
-    border: 1px solid #ccc;
 }
 
+/* Barra di ricerca */
 .search-bar {
     width: 340px;
     height: 30px;
     margin: 5px;
+    border: 1px solid #ccc;
 }
 
 .search-bar::before {
@@ -70,21 +110,24 @@ header > div:nth-child(2){
     color: #ccc;
 }
 
-.search-bar > input {
+input {
     width: 100%;
     padding: 5px;
     font-size: 13px;
     border: none;
 }
 
+.sidebar,
 .search-bar,
 .contacts-list {
     background-color: #fff;  
 }
 
+/* Lista dei contatti */
 .contacts-list {
     width: 340px;
     height: 410px;
+    border-right: 1px solid #ccc;
 }
 
 li {
@@ -103,4 +146,94 @@ li > img {
     height: 50px;
     margin-right: 20px;
     border-radius: 50%;
+}
+
+/* ---------------------------------- MAIN */
+.container-chat {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    width: 650px;
+    height: calc(500px - 50px);
+    background-image: url('../img/mine.jpg');
+    padding: 40px 60px;
+}
+
+.container-answers,
+.container-my-messages {
+    display: flex;
+    flex-direction: column;
+}
+
+.answer, 
+.my-message {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+/* Chat a sinistra */
+.container-answers {
+    justify-content: start;
+    align-items: start;
+}
+.answer {
+    background-color: #fff;
+}
+
+/* Chat a destra */
+.container-my-messages {
+    justify-content: end;
+    align-items: end;
+}
+
+.my-message {
+    background-color: lightgreen;
+}
+
+/* ---------------------------------- FOOTER */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 650px;
+    height: 50px;
+    background-color: indigo;
+}
+
+footer > div:nth-child(2) { 
+    /* width: calc(100% - 100px); */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.ft-input-message > input {
+    height: 40px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.ft-input-message::before {
+    content: '\f118';
+}
+
+.ft-input-message::after {
+    content: '\f130';
+}
+
+.ft-input-message::before,
+.ft-input-message::after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 18px;
+    color: #ccc;
+    padding: 20px 25px;
 }
