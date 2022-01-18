@@ -80,18 +80,32 @@
             <div class="container-chat">
                 <div class="container-my-messages">
                     <div class="my-message">
-                        Stampare date e text
-                        <!-- stampare con vue.js dell'array messages, l'elemento text e date dell'oggetto -->
+                        <div class="message-text">
+                            {{contacts[0].messages[0].text}}
+                        </div>
+                        <div class="message-date">
+                            {{contacts[0].messages[0].date}}
+                        </div>
                     </div>
     
                     <div class="my-message">
-                        Stampare date e text
+                        <div class="message-text">
+                            {{contacts[0].messages[1].text}}
+                        </div>
+                        <div class="message-date">
+                            {{contacts[0].messages[1].date}}
+                        </div>
                     </div>
                 </div>
 
                 <div class="container-answers">
                     <div class="answer">
-                        Stampare date e text
+                        <div class="message-text">
+                            {{contacts[0].messages[2].text}}
+                        </div>
+                        <div class="message-date">
+                            {{contacts[0].messages[2].date}}
+                        </div>
                     </div>
                 </div>
             </div>
