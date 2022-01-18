@@ -68,7 +68,6 @@ header > div:last-child {
 }
 
 /* ---------------------------------- SIDEBAR */
-
 .sidebar {
     width: 350px;
     height: 500px;
@@ -80,6 +79,33 @@ header > div:last-child {
     width: 350px;
     height: 50px;
     background-color: lightskyblue;
+}
+
+.icon-notifications {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    background-color: #fff;
+    margin: 0 10px;
+}
+
+.icon-notifications > i {
+    color: lightskyblue;
+    font-size: 15px;
+}
+
+.text-notifications div:first-child {
+    font-weight: 600;
+    padding-bottom: 2px;
+}
+
+.text-notifications div:last-child {
+    color: grey;
+    font-size: 10px;
+    text-decoration: underline;
 }
 
 .notifications,
@@ -162,7 +188,7 @@ li > img {
     flex-direction: column;
 }
 
-.answer, 
+.answer-mate, 
 .my-message {
     display: flex;
     flex-direction: column;
@@ -192,7 +218,7 @@ li > img {
     justify-content: start;
     align-items: start;
 }
-.answer {
+.answer-mate {
     background-color: #fff;
 }
 

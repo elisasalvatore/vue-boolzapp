@@ -12,7 +12,8 @@
 </head>
 <body>
     <div id="app">
-   
+        
+        <!-- ---------------------------------- HEADER -->
         <header>
             <div class="hd-left">
                 <div class="profile">
@@ -53,9 +54,23 @@
             </div>
         </header>
 
+        <!-- ---------------------------------- SIDEBAR -->
         <div class="sidebar">
             <div class="notifications">
-                Box notifiche 
+                <div class="icon-notifications">
+                    <i class="fas fa-bell-slash"></i>
+                    <!-- unicode: \f1f6 -->
+                </div>
+
+                <div class="text-notifications">
+                    <div class="new-notifications-text">
+                        Ricevi notifiche di nuovi messaggi
+                    </div>
+
+                    <div class="active-notifications">
+                        Attiva notifiche desktop
+                    </div>
+                </div>
             </div>
 
             <div class="search-bar">
@@ -72,11 +87,8 @@
             </div>
         </div>
 
+        <!-- ---------------------------------- MAIN -->
         <main>
-            <!-- dividere a metà il main:
-            div a sinistra classe "answer" con box di messaggistica bianco
-            div a destra classe "my-message" con box di messaggistica verde 
-            * main = flex con justify-contents: space between/around -->
             <div class="container-chat">
                 <div class="container-my-messages">
                     <div class="my-message">
@@ -99,7 +111,7 @@
                 </div>
 
                 <div class="container-answers">
-                    <div class="answer">
+                    <div class="answer-mate">
                         <div class="message-text">
                             {{contacts[0].messages[2].text}}
                         </div>
@@ -111,6 +123,7 @@
             </div>
         </main>
         
+        <!-- ---------------------------------- FOOTER -->
         <footer>
             <div class="ft-emojy">
 
