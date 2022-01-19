@@ -125,6 +125,8 @@ new Vue({
             return this.contacts.filter(item => {
               return item.name.toLowerCase().startsWith(this.searchInput.toLowerCase());
             });
+            //con "startsWith()" mi filtra i nomi che iniziano per la lettera inserita nell'input dall'utente,
+            // mentre con "includes()" o "match()" le parole che contentono la lettera insierita nell'input
         },
     }
 });
