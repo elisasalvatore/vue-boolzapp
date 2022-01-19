@@ -93,6 +93,7 @@ new Vue({
         },
         currentIndex: 0,
         temporarySentMessage: '',
+        searchInput: '',
     },
     methods: {
         currentContact: function(i) {
@@ -117,5 +118,14 @@ new Vue({
                 })
             }, 1000);
         },
+        
     },
-})
+    computed: {
+        filteredContacts() {
+            return this.contacts.filter(item => {
+              return item.name.match(this.searchInput)
+            })
+        },
+    }
+});
+

@@ -75,12 +75,12 @@
                 </div>
 
                 <div class="search-bar">
-                    <input placeholder="Cerca o inizia una nuova chat">
+                    <input type="text" v-model="searchInput" placeholder="Cerca o inizia una nuova chat">
                 </div>
 
                 <div class="contacts-list">
                     <ul>
-                        <li @click="currentContact(i)" v-for="(item, i) in contacts">
+                        <li @click="currentContact(i)" v-for="(item, i) in filteredContacts">
                             <!-- oppure @click="currentIndex = i", senza scrivere un metodo in js -->
                             <img :src="item.avatar" />
                             <span>{{item.name}}</span>
