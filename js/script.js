@@ -123,8 +123,8 @@ new Vue({
     computed: {
         filteredContacts() {
             return this.contacts.filter(item => {
-              return item.name.match(this.searchInput)
-            })
+              return item.name.toLowerCase().includes(this.searchInput.toLowerCase());
+            });
         },
     }
 });
