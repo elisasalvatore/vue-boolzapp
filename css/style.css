@@ -46,6 +46,7 @@ header > div:last-child {
     font-size: 18px;
     padding: 5px;
     color: #cccccc;
+    cursor: pointer;
 }
 
 .profile {

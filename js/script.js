@@ -93,7 +93,6 @@ new Vue({
         },
         currentIndex: 0,
         temporarySentMessage: '',
-        timer: null,
     },
     methods: {
         currentContact: function(i) {
@@ -107,15 +106,16 @@ new Vue({
             }),
             this.temporarySentMessage =''; //placeholder dell'input vuoto dopo l'invio del messaggio
 
-            this.timer = setInterval(this.automaticMateAnswer(), 1000);
-            
+            this.automaticMateAnswer()
         },
         automaticMateAnswer: function(currentIndex) {
-            this.contacts[this.currentIndex].messages.push({
-                date: '10/01/2020 15:50:00', //data e ora temporanee TODO
-                text: 'Ok!',
-                status: 'received'
-            })
+            setTimeout(() => {
+                this.contacts[this.currentIndex].messages.push({
+                    date: '10/01/2020 15:50:00', //data e ora temporanee TODO
+                    text: 'Ok!',
+                    status: 'received'
+                })
+            }, 1000);
         },
     },
 });
