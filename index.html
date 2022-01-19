@@ -81,6 +81,7 @@
                 <div class="contacts-list">
                     <ul>
                         <li @click="currentContact(i)" v-for="(item, i) in contacts">
+                            <!-- oppure @click="currentIndex = i", senza scrivere un metodo in js -->
                             <img :src="item.avatar" />
                             <span>{{item.name}}</span>
                         </li>
@@ -106,7 +107,7 @@
                 <div class="ft-emojy"></div>
                 
                 <div class="ft-input-message">
-                    <input placeholder="Scrivi un messaggio">
+                    <input v-model="temporarySentMessage" @keyup.enter="sentMessage" placeholder="Scrivi un messaggio">
                 </div>
 
                 <div class="ft-microphone"></div>

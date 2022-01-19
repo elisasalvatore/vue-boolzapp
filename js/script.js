@@ -87,16 +87,35 @@ new Vue({
                 ],
             },
         ],
-        currentIndex: 0,
         userProfileInfos: {
             name: 'Nome Utente',
             avatar: './img/avatar_io.jpg',
         },
-        
+        currentIndex: 0,
+        temporarySentMessage: '',
+        timer: null,
     },
     methods: {
         currentContact: function(i) {
             this.currentIndex = i;
+        },
+        sentMessage: function(currentIndex) {
+            this.contacts[this.currentIndex].messages.push({
+                date: '10/01/2020 15:50:00', //data e ora temporanee TODO
+                text: this.temporarySentMessage,
+                status: 'sent'
+            }),
+            this.temporarySentMessage =''; //placeholder dell'input vuoto dopo l'invio del messaggio
+
+            this.timer = setInterval(this.automaticMateAnswer(), 1000);
+            
+        },
+        automaticMateAnswer: function(currentIndex) {
+            this.contacts[this.currentIndex].messages.push({
+                date: '10/01/2020 15:50:00', //data e ora temporanee TODO
+                text: 'Ok!',
+                status: 'received'
+            })
         },
     },
 });
