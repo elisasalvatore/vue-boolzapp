@@ -112,13 +112,16 @@ new Vue({
         automaticMateAnswer: function(currentIndex) {
             setTimeout(() => {
                 this.contacts[this.currentIndex].messages.push({
-                    date: '10/01/2020 15:50:00', //data e ora temporanee TODO
-                    text: 'Ok!',
+                    date: '10/01/2020 15:50:01', //data e ora temporanee TODO
+                    text: `Ciao ${this.userProfileInfos.name}, come stai?`,
                     status: 'received'
                 })
             }, 1000);
         },
-        
+        deleteMessage: function(index) {
+            this.contacts[this.currentIndex].messages.splice(index, 1);
+            //(index, 1) significa: "voglio cancellare UN item partendo dall'INDEX iniziale"
+        } 
     },
     computed: {
         filteredContacts() {
@@ -128,6 +131,8 @@ new Vue({
             //con "startsWith()" mi filtra i nomi che iniziano per la lettera inserita nell'input dall'utente,
             // mentre con "includes()" o "match()" le parole che contentono la lettera insierita nell'input
         },
+      
     }
 });
+
 

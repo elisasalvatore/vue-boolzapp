@@ -9,6 +9,7 @@
     height: 100vh;
     padding-top: 20px;
     background-color: #009688;
+    /* background: linear-gradient(180deg,#009688, 40%, #d4dbda); */
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -157,7 +158,7 @@ input {
     overflow-y: scroll;
 }
 
-li {
+.contacts-list > div {
     display: flex;
     padding: 10px;   
     font-size: 13px; 
@@ -165,11 +166,11 @@ li {
     cursor: pointer;
 }
 
-ul > li:nth-child(odd) { /*dispari*/
+.contacts-list> div:nth-child(odd) {  /*dispari*/
     background-color: #f4f5f5;
 }
 
-li > img {
+.contacts-list img {
     width: 50px;
     height: 50px;
     margin-right: 20px;

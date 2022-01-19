@@ -79,13 +79,17 @@
                 </div>
 
                 <div class="contacts-list">
-                    <ul>
-                        <li @click="currentContact(i)" v-for="(item, i) in filteredContacts">
-                            <!-- oppure @click="currentIndex = i", senza scrivere un metodo in js -->
-                            <img :src="item.avatar" />
-                            <span>{{item.name}}</span>
-                        </li>
-                    </ul>
+                    <!-- oppure @click="currentIndex = i", senza scrivere un metodo in js -->
+                    <div @click="currentContact(i)" v-for="(item, i) in filteredContacts">
+                        <img :src="item.avatar" />
+                        <div>{{item.name}}</div>
+
+                        <!-- TODO: STAMPARE ULTIMO MESSAGGIO RICEVUTO/INVIATO NELLA LISTA DEI CONTATTI
+                        <div v-for="(item, i) in contacts[i].messages">
+                            {{item.text}}
+                             {{item.date}}
+                        </div> -->
+                    </div>
                 </div>
             </div>
 
@@ -93,7 +97,9 @@
             <main>
                 <div class="container-chat">
                     <div v-for="(item, i) in contacts[currentIndex].messages" class="chat">
-                        <div class="message-text" v-bind:class="item.status"> 
+                        <div @click="deleteMessage(i)" class="message-text" v-bind:class="item.status"> 
+                            <!--deleteMessaget(i): la (i) è importante per specificare quale item si intende cancellare dalla lista. 
+                            Senza (i) cancellerebbe sempre il primo item della lista anche se si clicca per cancellarne un altro' -->
                             {{item.text}} 
                             <div class="message-date"> {{item.date}} </div>
                         </div>
