@@ -94,4 +94,9 @@ new Vue({
         },
         
     },
+    methods: {
+        currentContact: function(i) {
+            this.currentIndex = i;
+        },
+    },
 });

@@ -161,6 +161,7 @@ li {
     padding: 10px;   
     font-size: 13px; 
     list-style: none;
+    cursor: pointer;
 }
 
 ul > li:nth-child(odd) { /*dispari*/
