@@ -87,9 +87,11 @@ new Vue({
                 ],
             },
         ],
+        currentIndex: 0,
         userProfileInfos: {
             name: 'Nome Utente',
             avatar: './img/avatar_io.jpg',
         },
+        
     },
 });

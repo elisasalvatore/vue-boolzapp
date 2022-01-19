@@ -4,13 +4,16 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: cadetblue;
+#app {
+    width: 100vw;
+    height: 100vh;
+    padding-top: 20px;
+    background-color: #009688;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#app {
-    margin: 20px auto;
+.container {
+    margin: 0 auto;
     width: 1000px;
     height: 550px;
     background-color: #fff;
@@ -23,7 +26,7 @@ header > div {
     justify-content: space-between;
     height: 50px;
     padding: 0 10px;
-    background-color: #fff;
+    background-color: #eaeaea;
 }
 
 /* Header di sinistra */
@@ -42,7 +45,7 @@ header > div:last-child {
 .far {
     font-size: 18px;
     padding: 5px;
-    color: #ccc;
+    color: #cccccc;
 }
 
 .profile {
@@ -64,7 +67,7 @@ header > div:last-child {
 
 .mate-login {
     padding-top: 2px;
-    color: #ccc;
+    color: #828a8c;
 }
 
 /* ---------------------------------- SIDEBAR */
@@ -78,7 +81,7 @@ header > div:last-child {
 .notifications {
     width: 350px;
     height: 50px;
-    background-color: lightskyblue;
+    background-color: #8edafb;
 }
 
 .icon-notifications {
@@ -161,7 +164,7 @@ li {
 }
 
 ul > li:nth-child(odd) { /*dispari*/
-    background-color: #ccc;
+    background-color: #f4f5f5;
 }
 
 li > img {
@@ -182,54 +185,37 @@ li > img {
     padding: 40px 60px;
 }
 
-.container-answers,
-.container-my-messages {
-    display: flex;
-    flex-direction: column;
-}
-
-.answer-mate, 
-.my-message {
+.chat > div {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 200px;
+    width: 225px;
     height: 40px;
     border-radius: 10px;
-    padding-left: 10px;
     margin-bottom: 20px;
 }
 
 .message-text {
-    display: flex;
-    align-items: start;
+    padding: 15px;
 }
 
-.message-date{
+.message-date {
     display: flex;
     flex-direction: row-reverse;
     font-size: 8px;
     color: #333;
-    padding: 0 10px;
-}
-
-/* Chat a sinistra */
-.container-answers {
-    justify-content: start;
-    align-items: start;
-}
-.answer-mate {
-    background-color: #fff;
+    
 }
 
 /* Chat a destra */
-.container-my-messages {
-    justify-content: end;
-    align-items: end;
+.sent {
+    background-color: lightgreen;
+    float: right;
 }
 
-.my-message {
-    background-color: lightgreen;
+/* Chat a sinistra */
+.received {
+    background-color: #fff;
 }
 
 /* ---------------------------------- FOOTER */
@@ -271,6 +257,6 @@ footer > div:nth-child(2) {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     font-size: 18px;
-    color: #ccc;
+    color: #6a7376;
     padding: 20px 25px;
 }

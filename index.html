@@ -12,131 +12,106 @@
 </head>
 <body>
     <div id="app">
-        
-        <!-- ---------------------------------- HEADER -->
-        <header>
-            <div class="hd-left">
-                <div class="profile">
-                    <img :src="userProfileInfos.avatar">
-                    
-                    <div class="info">
-                        <div class="user-name">{{userProfileInfos.name}}</div>
-                    </div>
-                </div>
-
-                <div class="icons">
-                    <i class="fas fa-circle-notch"></i> 
-                    <!-- unicode: \f1ce -->
-                    <i class="fas fa-comment-alt"></i>
-                    <!-- unicode: \f27a -->
-                    <i class="fas fa-ellipsis-v"></i>
-                    <!-- unicode: \f142 -->
-                </div>
-            </div>
-
-            <div class="hd-right">
-                <div class="profile">
-                    <img :src="contacts[0].avatar">
-
-                    <div class="infos">
-                        <div class="mate-name">{{contacts[0].name}}</div>
-                        <div class="mate-login">Ultimo accesso oggi alle</div>
-                    </div>
-                </div>
-
-                <span class="icons">
-                    <i class="fas fa-search"></i>
-                    <!-- unicode: \f002 -->
-                    <i class="fas fa-paperclip"></i>
-                    <!-- unicode: \f0c6 -->
-                    <i class="fas fa-ellipsis-v"></i>
-                </span>
-            </div>
-        </header>
-
-        <!-- ---------------------------------- SIDEBAR -->
-        <div class="sidebar">
-            <div class="notifications">
-                <div class="icon-notifications">
-                    <i class="fas fa-bell-slash"></i>
-                    <!-- unicode: \f1f6 -->
-                </div>
-
-                <div class="text-notifications">
-                    <div class="new-notifications-text">
-                        Ricevi notifiche di nuovi messaggi
-                    </div>
-
-                    <div class="active-notifications">
-                        Attiva notifiche desktop
-                    </div>
-                </div>
-            </div>
-
-            <div class="search-bar">
-                <input placeholder="Cerca o inizia una nuova chat">
-            </div>
-
-            <div class="contacts-list">
-                <ul>
-                    <li v-for="(item, i) in contacts">
-                        <img :src="item.avatar" />
-                        <span>{{item.name}}</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- ---------------------------------- MAIN -->
-        <main>
-            <div class="container-chat">
-                <div class="container-my-messages">
-                    <div class="my-message">
-                        <div class="message-text">
-                            {{contacts[0].messages[0].text}}
-                        </div>
-                        <div class="message-date">
-                            {{contacts[0].messages[0].date}}
-                        </div>
-                    </div>
     
-                    <div class="my-message">
-                        <div class="message-text">
-                            {{contacts[0].messages[1].text}}
+        <div class="container">
+            <!-- ---------------------------------- HEADER -->
+            <header>
+                <div class="hd-left">
+                    <div class="profile">
+                        <img :src="userProfileInfos.avatar">
+                        
+                        <div class="info">
+                            <div class="user-name">{{userProfileInfos.name}}</div>
                         </div>
-                        <div class="message-date">
-                            {{contacts[0].messages[1].date}}
+                    </div>
+
+                    <div class="icons">
+                        <i class="fas fa-circle-notch"></i> 
+                        <!-- unicode: \f1ce -->
+                        <i class="fas fa-comment-alt"></i>
+                        <!-- unicode: \f27a -->
+                        <i class="fas fa-ellipsis-v"></i>
+                        <!-- unicode: \f142 -->
+                    </div>
+                </div>
+
+                <div class="hd-right">
+                    <div class="profile">
+                        <img :src="contacts[0].avatar">
+
+                        <div class="infos">
+                            <div class="mate-name">{{contacts[0].name}}</div>
+                            <div class="mate-login">Ultimo accesso oggi alle</div>
+                        </div>
+                    </div>
+
+                    <span class="icons">
+                        <i class="fas fa-search"></i>
+                        <!-- unicode: \f002 -->
+                        <i class="fas fa-paperclip"></i>
+                        <!-- unicode: \f0c6 -->
+                        <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                </div>
+            </header>
+
+            <!-- ---------------------------------- SIDEBAR -->
+            <div class="sidebar">
+                <div class="notifications">
+                    <div class="icon-notifications">
+                        <i class="fas fa-bell-slash"></i>
+                        <!-- unicode: \f1f6 -->
+                    </div>
+
+                    <div class="text-notifications">
+                        <div class="new-notifications-text">
+                            Ricevi notifiche di nuovi messaggi
+                        </div>
+
+                        <div class="active-notifications">
+                            Attiva notifiche desktop
                         </div>
                     </div>
                 </div>
 
-                <div class="container-answers">
-                    <div class="answer-mate">
-                        <div class="message-text">
-                            {{contacts[0].messages[2].text}}
-                        </div>
-                        <div class="message-date">
-                            {{contacts[0].messages[2].date}}
-                        </div>
-                    </div>
+                <div class="search-bar">
+                    <input placeholder="Cerca o inizia una nuova chat">
+                </div>
+
+                <div class="contacts-list">
+                    <ul>
+                        <li v-for="(item, i) in contacts">
+                            <img :src="item.avatar" />
+                            <span>{{item.name}}</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </main>
-        
-        <!-- ---------------------------------- FOOTER -->
-        <footer>
-            <div class="ft-emojy">
 
-            </div>
+            <!-- ---------------------------------- MAIN -->
+            <main>
+                <div class="container-chat">
+                    <div v-for="(item, i) in contacts[currentIndex].messages" class="chat">
+                        <div class="message-text" v-bind:class="item.status"> 
+                            {{item.text}} 
+                            <div class="message-date"> {{item.date}} </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
             
-            <div class="ft-input-message">
-                <input placeholder="Scrivi un messaggio">
-            </div>
+            <!-- ---------------------------------- FOOTER -->
+            <footer>
+                <div class="ft-emojy"></div>
+                
+                <div class="ft-input-message">
+                    <input placeholder="Scrivi un messaggio">
+                </div>
 
-            <div class="ft-microphone">
-
-            </div>
-        </footer>    
+                <div class="ft-microphone"></div>
+            </footer>    
+        </div>
     </div>
 
     <script src="./js/script.js"></script>
