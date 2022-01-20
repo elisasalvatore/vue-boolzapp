@@ -159,8 +159,6 @@ input {
 }
 
 .contacts-list > div {
-    display: flex;
-    padding: 10px;   
     font-size: 13px; 
     list-style: none;
     cursor: pointer;
@@ -170,9 +168,15 @@ input {
     background-color: #f4f5f5;
 }
 
+.contact-box {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
 .contacts-list img {
     width: 50px;
-    height: 50px;
+    height: 50px;  
     margin-right: 20px;
     border-radius: 50%;
 }
@@ -212,7 +216,7 @@ input {
 
 /* Chat a destra */
 .sent {
-    background-color: lightgreen;
+    background-color: #d5f9ba;
     float: right;
 }
 

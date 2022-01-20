@@ -93,26 +93,35 @@ new Vue({
         },
         currentIndex: 0,
         temporarySentMessage: '',
-        searchInput: '',
+        researchInput: '',
+
     },
     methods: {
-        currentContact: function(i) {
+        // getAvatarPic(item) {
+        //     return `img/avatar${item.avatar}.jpg`;
+        // },
+        getCurrentDate: function() { //riportare la funzione dove intendo mostrare la data e l'ora attuale (es.vedi line 112)
+            return dayjs().format('DD/MM/YYYY HH:mm:ss')
+        }, 
+        setCurrentContact: function(i) {
             this.currentIndex = i;
         },
-        sentMessage: function(currentIndex) {
-            this.contacts[this.currentIndex].messages.push({
-                date: '10/01/2020 15:50:00', //data e ora temporanee TODO
+        sentMessageTo: function(item) { // ** currentIndex come argomento al posto di item
+            //this.contacts[this.currentIndex].messages.push({ //USANDO QUESTA STRUTTURA: **
+            item.messages.push({ //alternativa alla struttura commentata sopra: prima il currentIndex veniva dettato su js mentre con questa struttura alternativa viene dettato su html
+                date: this.getCurrentDate(), 
                 text: this.temporarySentMessage,
                 status: 'sent'
             }),
             this.temporarySentMessage =''; //placeholder dell'input vuoto dopo l'invio del messaggio
 
-            this.automaticMateAnswer()
+            this.automaticMateAnswer(item) // ** no argomento
         },
-        automaticMateAnswer: function(currentIndex) {
+        automaticMateAnswer: function(item) { // ** currentIndex come argomento al posto di item
             setTimeout(() => {
-                this.contacts[this.currentIndex].messages.push({
-                    date: '10/01/2020 15:50:01', //data e ora temporanee TODO
+                // this.contacts[this.currentIndex].messages.push({ //USANDO QUESTA STRUTTURA: **
+                item.messages.push({    
+                    date: this.getCurrentDate(), 
                     text: `Ciao ${this.userProfileInfos.name}, come stai?`,
                     status: 'received'
                 })
@@ -123,16 +132,15 @@ new Vue({
             //(index, 1) significa: "voglio cancellare UN item partendo dall'INDEX iniziale"
         } 
     },
-    computed: {
-        filteredContacts() {
-            return this.contacts.filter(item => {
-              return item.name.toLowerCase().startsWith(this.searchInput.toLowerCase());
-            });
-            //con "startsWith()" mi filtra i nomi che iniziano per la lettera inserita nell'input dall'utente,
-            // mentre con "includes()" o "match()" le parole che contentono la lettera insierita nell'input
-        },
-      
-    }
+    // computed: {
+    //     filteredContacts() {
+    //         return this.contacts.filter(item => {
+    //           return item.name.toLowerCase().startsWith(this.researchInput.toLowerCase());
+    //         });
+    //         //con "startsWith()" mi filtra i nomi che iniziano con la lettera inserita nell'input dall'utente,
+    //         // mentre con "includes()" o "match()" le parole che contentono la lettera inserita nell'input
+    //     },
+    // }
 });
 
 

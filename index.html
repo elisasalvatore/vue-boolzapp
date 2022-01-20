@@ -7,8 +7,9 @@
     <title>Boolzap</title>
 
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- FontAwesome --> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- Day.js CDN --> <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script> 
+    <!-- Vue.js CDN --> <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> 
 </head>
 <body>
     <div id="app">
@@ -75,28 +76,35 @@
                 </div>
 
                 <div class="search-bar">
-                    <input type="text" v-model="searchInput" placeholder="Cerca o inizia una nuova chat">
+                    <input type="text" v-model="researchInput" placeholder="Cerca o inizia una nuova chat">
                 </div>
 
                 <div class="contacts-list">
-                    <!-- oppure @click="currentIndex = i", senza scrivere un metodo in js -->
-                    <div @click="currentContact(i)" v-for="(item, i) in filteredContacts">
-                        <img :src="item.avatar" />
-                        <div>{{item.name}}</div>
-
-                        <!-- TODO: STAMPARE ULTIMO MESSAGGIO RICEVUTO/INVIATO NELLA LISTA DEI CONTATTI
-                        <div v-for="(item, i) in contacts[i].messages">
-                            {{item.text}}
-                             {{item.date}}
-                        </div> -->
-                    </div>
+                    <div v-for="(item, i) in contacts" @click="setCurrentContact(i)">
+                        <!-- avrei scritto "(item, i) in filteredContacts" se, per filtrare, avessi utilizzato la funzione filteredContacts in computed al posto del v-if (che segue)-->
+                        <!-- per evento click: soluzione utilizzata oppure @click="currentIndex = i", senza scrivere un metodo in vue.js -->
+                        <div class="contact-box" v-if="item.name.toLowerCase().startsWith(researchInput)">
+                            <div class="contact-image">
+                                <img :src="item.avatar"/>
+                            </div>
+                            <!-- <img :src="item.avatar"/> con questa scrittura bisogna cambiare nel data l'avatar inserirendo ad es.'./img/avatar_1.jpg' per ogni contatto, mentre, creando un metodo "getAvatarPic(item)" non è necessario cambiare il valore di ogni avatar nel data.
+                            Cosigliato usare <img :src="getAvatarPic(item)"/> creando un metodo -->
+                            <div class="contact-name"><div>{{item.name}}</div></div>
+    
+                            <!-- TODO: STAMPARE ULTIMO MESSAGGIO RICEVUTO/INVIATO NELLA LISTA DEI CONTATTI
+                            <div v-for="(item, i) in contacts[i].messages">
+                                {{item.text}}
+                                 {{item.date}}
+                            </div> -->
+                        </div>
+                    </div> 
                 </div>
             </div>
 
             <!-- ---------------------------------- MAIN -->
             <main>
                 <div class="container-chat">
-                    <div v-for="(item, i) in contacts[currentIndex].messages" class="chat">
+                    <div class="chat" v-for="(item, i) in contacts[currentIndex].messages">
                         <div @click="deleteMessage(i)" class="message-text" v-bind:class="item.status"> 
                             <!--deleteMessaget(i): la (i) è importante per specificare quale item si intende cancellare dalla lista. 
                             Senza (i) cancellerebbe sempre il primo item della lista anche se si clicca per cancellarne un altro' -->
@@ -113,7 +121,8 @@
                 <div class="ft-emojy"></div>
                 
                 <div class="ft-input-message">
-                    <input v-model="temporarySentMessage" @keyup.enter="sentMessage" placeholder="Scrivi un messaggio">
+                    <input placeholder="Scrivi un messaggio" v-model="temporarySentMessage" @keyup.enter="sentMessageTo(contacts[currentIndex])">
+                    <!-- (** vedi su script line110) @keyup.enter="sentMessageTo" -->
                 </div>
 
                 <div class="ft-microphone"></div>
